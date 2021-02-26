@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Muli', sans-serif;
+  margin: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh; 
+  /* since column, align-items aligns horizontally and justify aligns vertically, for them to align vertically we must add a height */
+  overflow: hidden;
+  /* this hides scroll bars by default */
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
   color: white;
+  cursor: pointer;
+  flex: 0.5; 
+  /* this is what sets flex elements to even width */
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in;
 }
 
-.App-link {
-  color: #61dafb;
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media(max-width: 480px) {
+  .container {
+    width: 100vw;
   }
-  to {
-    transform: rotate(360deg);
+
+  .panel:nth-of-type(4),  .panel:nth-of-type(5) {
+    display: none;
   }
 }
